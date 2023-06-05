@@ -101,7 +101,7 @@ export const DEFAULT_SETTINGS: ExecutorSettings = {
 	ghciPath: "ghci",
 	useGhci: false,
 	
-
+	//TODO (@mayurankv) Finish changing interfaces, then find all places where used and change
 	c: {
 		path: "cling",
 		useMain: true
