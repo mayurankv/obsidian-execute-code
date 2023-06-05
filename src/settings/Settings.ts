@@ -1,6 +1,18 @@
 import {LanguageId} from "src/main";
 
 /**
+ * Interface that contains all the settings for a specific language.
+ */
+export interface LanguageSettings {
+	path: string;
+	args: string;
+	fileExtension: string;
+	inject: string;
+	interactive: boolean;
+}
+
+
+/**
  * Interface that contains all the settings for the extension.
  */
 export interface ExecutorSettings {
@@ -19,43 +31,15 @@ export interface ExecutorSettings {
 	leanPath: string;
 	leanArgs: string;
 	leanInject: string;
-	luaPath: string;
-	luaArgs: string;
-	luaFileExtension: string;
-	luaInject: string;
-	dartPath: string;
-	dartArgs: string;
-	dartFileExtension: string;
-	dartInject: string;
-	csPath: string;
-	csArgs: string;
-	csFileExtension: string;
-	csInject: string;
 	pythonPath: string;
 	pythonArgs: string;
 	pythonEmbedPlots: boolean;
 	pythonFileExtension: string;
 	pythonInject: string;
-	shellPath: string;
-	shellArgs: string;
-	shellFileExtension: string;
-	shellInject: string;
 	batchPath: string;
 	batchArgs: string;
 	batchFileExtension: string;
 	batchInject: string;
-	groovyPath: string;
-	groovyArgs: string;
-	groovyFileExtension: string;
-	groovyInject: string;
-	golangPath: string,
-	golangArgs: string,
-	golangFileExtension: string,
-	goInject: string;
-	javaPath: string,
-	javaArgs: string,
-	javaFileExtension: string,
-	javaInject: string;
 	maxPrologAnswers: number;
 	prologInject: string;
 	powershellPath: string;
@@ -63,14 +47,6 @@ export interface ExecutorSettings {
 	powershellFileExtension: string;
 	powershellInject: string;
 	powershellEncoding: BufferEncoding;
-	octavePath: string;
-	octaveArgs: string;
-	octaveFileExtension: string;
-	octaveInject: string;
-	maximaPath: string;
-	maximaArgs: string;
-	maximaFileExtension: string;
-	maximaInject: string;
 	cargoPath: string;
 	cargoEvalArgs: string;
 	rustInject: string;
@@ -88,73 +64,54 @@ export interface ExecutorSettings {
 	REmbedPlots: boolean;
 	RFileExtension: string;
 	rInject: string;
-	kotlinPath: string;
-	kotlinArgs: string;
-	kotlinFileExtension: string;
-	kotlinInject: string;
 	runghcPath: string;
 	ghcPath: string;
 	ghciPath: string;
 	haskellInject: string;
 	useGhci: boolean;
-	mathematicaPath: string;
-	mathematicaArgs: string;
-	mathematicaFileExtension: string;
-	mathematicaInject: string;
-	scalaPath: string;
-	scalaArgs: string;
-	scalaFileExtension: string;
-	scalaInject: string;
-	racketPath: string;
-	racketArgs: string;
-	racketFileExtension: string;
-	racketInject: string;
-	fsharpPath: string;
-	fsharpArgs: string;
-	fsharpInject: "";
-	fsharpFileExtension: string;
 	cArgs: string;
 	cUseMain: boolean;
 	cInject: string;
-	rubyPath: string;
-	rubyArgs: string;
-	rubyFileExtension: string;
-	rubyInject: string;
-	sqlPath: string;
-	sqlArgs: string;
-	sqlInject: string;
 
 	jsInteractive: boolean;
 	tsInteractive: boolean;
-	csInteractive: boolean;
 	leanInteractive: boolean;
-	luaInteractive: boolean;
-	dartInteractive: boolean;
 	pythonInteractive: boolean;
 	cppInteractive: boolean;
 	prologInteractive: boolean;
-	shellInteractive: boolean;
 	batchInteractive: boolean;
 	bashInteractive: boolean;
-	groovyInteractive: boolean;
 	rInteractive: boolean;
-	goInteractive: boolean;
 	rustInteractive: boolean;
-	javaInteractive: boolean;
 	powershellInteractive: boolean;
-	kotlinInteractive: boolean;
 	mathematicaInteractive: boolean;
 	haskellInteractive: boolean;
-	scalaInteractive: boolean;
-	racketInteractive: boolean;
-	fsharpInteractive: boolean;
 	cInteractive: boolean;
-	rubyInteractive: boolean;
-	sqlInteractive: boolean;
-	octaveInteractive: boolean;
-	maximaInteractive: boolean;
+	shell: LanguageSettings;
+	lua: LanguageSettings;
+	dart: LanguageSettings;
+	groovy: LanguageSettings;
+	golang: LanguageSettings;
+	java: LanguageSettings;
+	sql: LanguageSettings;
+	kotlin: LanguageSettings;
+	mathematica: LanguageSettings;
+	scala: LanguageSettings;
+	fsharp: LanguageSettings;
+	racket: LanguageSettings;
+	cs: LanguageSettings;
+	ruby: LanguageSettings;
+	octave: LanguageSettings;
+	maxima: LanguageSettings;
 }
 
+const DEFAULT_LANGUAGE_SETTINGS: LanguageSettings = {
+	path: "",
+	args: "",
+	fileExtension: "",
+	inject: "",
+	interactive: false,
+}
 
 /**
  * The default settings for the extensions as implementation of the ExecutorSettings interface.
@@ -175,43 +132,15 @@ export const DEFAULT_SETTINGS: ExecutorSettings = {
 	leanPath: "lean",
 	leanArgs: "",
 	leanInject: "",
-	luaPath: "lua",
-	luaArgs: "",
-	luaFileExtension: "lua",
-	luaInject: "",
-	dartPath: "dart",
-	dartArgs: "",
-	dartFileExtension: "dart",
-	dartInject: "",
-	csPath: "dotnet-script",
-	csArgs: "",
-	csFileExtension: "csx",
-	csInject: "",
 	pythonPath: "python",
 	pythonArgs: "",
 	pythonEmbedPlots: true,
 	pythonFileExtension: "py",
 	pythonInject: "",
-	shellPath: "bash",
-	shellArgs: "",
-	shellFileExtension: "sh",
-	shellInject: "",
 	batchPath: "call",
 	batchArgs: "",
 	batchFileExtension: "bat",
 	batchInject: "",
-	groovyPath: "groovy",
-	groovyArgs: "",
-	groovyFileExtension: "groovy",
-	groovyInject: "",
-	golangPath: "go",
-	golangArgs: "run",
-	golangFileExtension: "go",
-	goInject: "",
-	javaPath: "java",
-	javaArgs: "-ea",
-	javaFileExtension: "java",
-	javaInject: "",
 	maxPrologAnswers: 15,
 	prologInject: "",
 	powershellPath: "powershell",
@@ -236,76 +165,114 @@ export const DEFAULT_SETTINGS: ExecutorSettings = {
 	REmbedPlots: true,
 	RFileExtension: "R",
 	rInject: "",
-	kotlinPath: "kotlinc",
-	kotlinArgs: "-script",
-	kotlinFileExtension: "kts",
-	kotlinInject: "",
 	runghcPath: "runghc",
 	ghcPath: "ghc",
 	ghciPath: "ghci",
 	useGhci: false,
 	haskellInject: "",
-	mathematicaPath: "wolframscript",
-	mathematicaArgs: "-file",
-	mathematicaFileExtension: "wls",
-	mathematicaInject: "",
-	scalaPath: "scala",
-	scalaArgs: "",
-	scalaFileExtension: "scala",
-	scalaInject: "",
-	racketPath: "racket",
-	racketArgs: "",
-	racketFileExtension: "rkt",
-	racketInject: "#lang racket",
-	fsharpPath: "dotnet",
-	fsharpArgs: "",
-	fsharpInject: "",
-	fsharpFileExtension: "fsx",
 	cArgs: "",
 	cUseMain: true,
 	cInject: "",
-	rubyPath: "ruby",
-	rubyArgs: "",
-	rubyFileExtension: "rb",
-	rubyInject: "",
-	sqlPath: "psql",
-	sqlArgs: "-d <database> -U <user> -f",
-	sqlInject: "",
-	octavePath: "octave",
-	octaveArgs: "-q",
-	octaveFileExtension: "m",
-	octaveInject: "figure('visible','off')  # Necessary to embed plots",
-	maximaPath: "maxima",
-	maximaArgs: "-qb",
-	maximaFileExtension: "mx",
-	maximaInject: "",
 	jsInteractive: true,
 	tsInteractive: false,
-	csInteractive: false,
 	leanInteractive: false,
-	luaInteractive: false,
-	dartInteractive: false,
 	pythonInteractive: true,
 	cppInteractive: false,
 	prologInteractive: false,
-	shellInteractive: false,
 	batchInteractive: false,
 	bashInteractive: false,
-	groovyInteractive: false,
 	rInteractive: false,
-	goInteractive: false,
 	rustInteractive: false,
-	javaInteractive: false,
 	powershellInteractive: false,
-	kotlinInteractive: false,
-	mathematicaInteractive: false,
 	haskellInteractive: false,
-	scalaInteractive: false,
-	fsharpInteractive: false,
 	cInteractive: false,
-	racketInteractive: false,
-	rubyInteractive: false,
-	sqlInteractive: false,
-	octaveInteractive: false,
-	maximaInteractive: false,
+	shell: {
+		...DEFAULT_LANGUAGE_SETTINGS,
+		path: "bash",
+		fileExtension: "sh",
+	},
+	lua: {
+		...DEFAULT_LANGUAGE_SETTINGS,
+		path: "lua",
+		fileExtension: "lua",
+	},
+	dart: {
+		...DEFAULT_LANGUAGE_SETTINGS,
+		path: "dart",
+		fileExtension: "dart",
+	},
+	groovy: {
+		...DEFAULT_LANGUAGE_SETTINGS,
+		path: "groovy",
+		fileExtension: "groovy",
+	},
+	golang: {
+		...DEFAULT_LANGUAGE_SETTINGS,
+		path: "go",
+		args: "run",
+		fileExtension: "go",
+	},
+	java: {
+		...DEFAULT_LANGUAGE_SETTINGS,
+		path: "java",
+		args: "-ea",
+		fileExtension: "java",
+	},
+	sql: {
+		...DEFAULT_LANGUAGE_SETTINGS,
+		path: "psql",
+		args: "-d <database> -U <user> -f",
+		fileExtension: "sql",
+	},
+	kotlin: {
+		...DEFAULT_LANGUAGE_SETTINGS,
+		path: "kotlinc",
+		args: "-script",
+		fileExtension: "kts",
+	},
+	mathematica: {
+		...DEFAULT_LANGUAGE_SETTINGS,
+		path: "wolframscript",
+		args: "-file",
+		fileExtension: "wls",
+	},
+	scala: {
+		...DEFAULT_LANGUAGE_SETTINGS,
+		path: "scala",
+		fileExtension: "scala",
+	},
+	fsharp: {
+		...DEFAULT_LANGUAGE_SETTINGS,
+		path: "dotnet",
+		fileExtension: "fsx",
+	},
+	racket: {
+		...DEFAULT_LANGUAGE_SETTINGS,
+		path: "racket",
+		fileExtension: "rkt",
+		inject: "#lang racket",
+	},
+	cs: {
+		...DEFAULT_LANGUAGE_SETTINGS,
+		path: "dotnet-script",
+		fileExtension: "csx",
+	},
+	ruby: {
+		...DEFAULT_LANGUAGE_SETTINGS,
+		path: "ruby",
+		fileExtension: "rb",
+	},
+	octave: {
+		...DEFAULT_LANGUAGE_SETTINGS,
+		path: "octave",
+		args: "-q",
+		fileExtension: "m",
+		inject: "figure('visible','off')  # Necessary to embed plots",
+	},
+	maxima: {
+		...DEFAULT_LANGUAGE_SETTINGS,
+		path: "maxima",
+		args: "-qb",
+		fileExtension: "mx",
+	}
 }
