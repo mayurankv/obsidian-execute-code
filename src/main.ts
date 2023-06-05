@@ -389,7 +389,7 @@ export default class ExecuteCodePlugin extends Plugin {
 			button.addEventListener("click", async () => {
 				button.className = runButtonDisabledClass;
 				const transformedCode = await new CodeInjector(this.app, this.settings, language).injectCode(srcCode);
-				this.runCodeInShell(transformedCode, out, button, this.settings.latexPath, this.settings.latexArgs, "latex", language, file);
+				this.runCodeInShell(transformedCode, out, button, this.settings.latexPath, this.settings.latexArgs, this.settings.latexFileExtension, language, file);
 			})
 		}
 
