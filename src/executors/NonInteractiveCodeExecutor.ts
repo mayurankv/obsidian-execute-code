@@ -40,7 +40,7 @@ export default class NonInteractiveCodeExecutor extends Executor {
 				const args = cmdArgs ? cmdArgs.split(" ") : [];
 				
 				if (this.settings.wslMode) {
-					args.unshift("-e", cmd);
+				unshift("-e", cmd);
 					cmd = "wsl";
 					args.push(windowsPathToWsl(tempFileName));
 				} else {

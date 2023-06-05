@@ -140,6 +140,7 @@ export function addInlinePlotsToPython(source: string, toggleHtmlSigil: string):
 export function addInlinePlotsToR(source: string): string {
 	const matches = source.matchAll(R_PLOT_REGEX);
 	for (const match of matches) {
+		console.log(os.tmpdir())
 		const tempFile = `${os.tmpdir()}/temp_${Date.now()}.png`.replace(/\\/g, "/");
 		const substitute = `png("${tempFile}"); ${match[0]}; dev.off(); cat('${TOGGLE_HTML_SIGIL}<img src="app://local/${tempFile}" align="center">${TOGGLE_HTML_SIGIL}')`;
 
@@ -263,6 +264,13 @@ export function addInlinePlotsToMaxima(source: string): string {
 
 		source = source.replace(match[0], substitute);
 	}
+
+	return source;
+}
+
+export function addInlinePdfToLatex(source: string): string {
+	const tempFile = `${os.tmpdir()}/temp_${Date.now()}.png`.replace(/\\/g, "/");
+	
 
 	return source;
 }
