@@ -30,6 +30,7 @@ import {ExecutorSettings} from "./Settings";
 import makeSQLSettings from "./per-lang/makeSQLSettings";
 import makeOctaviaSettings from "./per-lang/makeOctaveSettings";
 import makeMaximaSettings from "./per-lang/makeMaximaSettings";
+import makeLatexSettings from "./per-lang/makeLatexSettings";
 
 
 /**
@@ -202,6 +203,9 @@ export class SettingsTab extends PluginSettingTab {
 
 		// ========== Maxima ============
 		makeMaximaSettings(this, this.makeContainerFor("maxima"));
+
+		// ========== LaTeX ============
+		makeLatexSettings(this, this.makeContainerFor("latex"));
 
 		this.focusContainer(this.plugin.settings.lastOpenLanguageTab || canonicalLanguages[0]);
 	}

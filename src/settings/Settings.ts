@@ -115,6 +115,11 @@ export interface ExecutorSettings {
 	sqlPath: string;
 	sqlArgs: string;
 	sqlInject: string;
+	latexPath: string;
+	latexArgs: string;
+	latexInject: string;
+	latexFileExtension: string;
+	latexEmbedDocs: boolean;
 
 	jsInteractive: boolean;
 	tsInteractive: boolean;
@@ -145,6 +150,7 @@ export interface ExecutorSettings {
 	sqlInteractive: boolean;
 	octaveInteractive: boolean;
 	maximaInteractive: boolean;
+	latexInteractive: boolean;
 }
 
 
@@ -263,6 +269,11 @@ export const DEFAULT_SETTINGS: ExecutorSettings = {
 	maximaArgs: "-qb",
 	maximaFileExtension: "mx",
 	maximaInject: "",
+	latexPath: "pdflatex",
+	latexArgs: "",
+	latexInject: "",
+	latexFileExtension: "tex",
+	latexEmbedDocs: false,
 	jsInteractive: true,
 	tsInteractive: false,
 	csInteractive: false,
@@ -292,4 +303,5 @@ export const DEFAULT_SETTINGS: ExecutorSettings = {
 	sqlInteractive: false,
 	octaveInteractive: false,
 	maximaInteractive: false,
+	latexInteractive: false,
 }
